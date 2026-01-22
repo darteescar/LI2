@@ -1,64 +1,16 @@
-# Projeto de Análise e Validação de Combinações de Cartas
+# LI2 (Laboratórios de Informática II) (Português)
 
-Este projeto implementa, em **C**, um conjunto de programas e funções para **ler, organizar, analisar e validar combinações de cartas** usando símbolos Unicode de cartas (🂡, 🂢, 🂣, etc.). O trabalho cobre várias fases (guiões), desde a identificação básica de cartas até à validação de jogadas num jogo de cartas.
+Este projeto implementa, em **C**, um conjunto de programas e funções para **ler, organizar, analisar e validar combinações de cartas** usando símbolos Unicode de cartas (🂡, 🂢, 🂣, etc.). O trabalho cobre as várias fases (guiões), desde a identificação básica de cartas até à validação de jogadas num jogo de cartas. Pode consultar o [enunciado](enunciado.pdf) para saber as regras.
 
-O código utiliza `wchar_t` e Unicode para representar cartas reais, exigindo configuração correta de *locale*.
+### Nota Final: 16 / 20 ⭐️
 
----
+## Membros do grupo
 
-## ⚙️ Funcionalidades Principais
+* [darteescar](https://github.com/darteescar)
+* [luis7788](https://github.com/luis7788)
+* [tiagofigueiredo7](https://github.com/tiagofigueiredo7)
 
-### Identificação e Contagem
-
-* `identificaCartas` – converte uma carta Unicode num índice interno
-* `contaCartas` – conta o número de cartas numa linha de input
-* `contaCartasLidas` – preenche o array de frequência das cartas
-
-### Organização
-
-* Ordenação das cartas por valor e naipe
-* Determinação da **carta mais alta** de uma combinação
-
-### Tipos de Combinação
-
-O projeto identifica automaticamente:
-
-* **Carta simples**
-* **Conjunto** (cartas do mesmo valor)
-* **Sequência** (valores consecutivos)
-* **Dupla sequência** (pares consecutivos)
-
----
-
-## 🎮 Validação de Jogadas (Guiões Avançados)
-
-Nos módulos mais avançados, o projeto passa a simular um jogo:
-
-### Estruturas Principais
-
-* `MAO` – cartas do jogador
-* `ULTIMAS` – últimas jogadas realizadas
-* `PRETENDIDA` – jogada que o jogador quer fazer
-
-### Regras Implementadas
-
-* A jogada tem de estar contida na mão do jogador
-* A combinação tem de ser válida
-* A jogada tem de ser do **mesmo tipo** da última jogada válida
-* A jogada tem de ser **maior** do que a anterior
-* Regras especiais para **Reis**
-* Três passes consecutivos permitem jogar qualquer combinação
-
-Funções-chave:
-
-* `invalida`
-* `eMaior`
-* `SeqEnumIguais`
-* `casoDosReis`
-
----
-
-## 🧪 Input e Output
+## Input e Output
 
 ### Input
 
@@ -73,36 +25,81 @@ Funções-chave:
 * Mão do jogador após a jogada (se válida)
 * Mensagens de erro quando aplicável
 
----
+## Compilação, Execução e Limpeza
 
-## 🛠️ Compilação
-
-É obrigatório usar **UTF-8** e ativar suporte a wide characters:
+Para compilar o projeto, utilize o `make`:
 
 ```bash
-gcc -Wall -Wextra -std=c11 -o cartas programa.c
+make
 ```
 
-Para modo debug:
+Para compilar e executar o programa principal faz-se:
 
 ```bash
-gcc -DDEBUG programa.c -o cartas
+make run
 ```
 
----
+Para limpar os ficheiros objeto e executáveis basta:
 
-## 📌 Notas Importantes
+```bash
+make clean
+```
+
+## Notas
 
 * O programa depende de `setlocale(LC_CTYPE, "C.UTF-8")`
 * Deve ser executado num terminal com suporte a Unicode
-* O código está dividido por fases (guiões), refletindo evolução incremental do projeto
+* O código está dividido por fases (guiões), refletindo a evolução incremental do projeto
 
----
 
-## 👨‍💻 Autor
+# LI2 (English)
+This project implements, in **C**, a set of programs and functions to **read, organize, analyze, and validate card combinations** using Unicode card symbols (🂡, 🂢, 🂣, etc.). The work covers various phases (scripts), from basic card identification to validating plays in a card game. You can refer to the [statement](enunciado.pdf) for the rules.
 
-Projeto académico em C para manipulação e validação de combinações de cartas usando Unicode.
+### Final Grade: 16 / 20 ⭐️
 
----
+## Group Members
 
-✔️ Este README descreve a lógica geral, estrutura e regras implementadas, sem depender de um ficheiro específico do código.
+* [darteescar](https://github.com/darteescar)
+* [luis7788](https://github.com/luis7788)
+* [tiagofigueiredo7](https://github.com/tiagofigueiredo7)
+
+## Input and Output
+
+### Input
+
+* Number of tests
+* Number of previous plays
+* Player's hand cards
+* Play history
+* Intended play
+
+### Output
+
+* Player's hand after the play (if valid)
+* Error messages when applicable
+
+## Compilation, Execution, and Cleanup
+
+To compile the project, use `make`:
+
+```bash
+make
+```
+
+To compile and run the main program, use:
+
+```bash
+make run
+```
+
+To clean up object files and executables, use:
+
+```bash
+make clean
+```
+
+## Notes
+
+* The program depends on `setlocale(LC_CTYPE, "C.UTF-8")`
+* It should be run in a terminal that supports Unicode
+* The code is divided by phases (scripts), reflecting the incremental evolution of the project
