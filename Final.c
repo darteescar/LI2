@@ -279,23 +279,18 @@ void geraDuplasSequencias10 ( wchar_t** matrizCartas,int j, int i, int i1 , int 
 
 
 wchar_t** divideEmLinhas(MAO m, int *numElementosPorLinha) {
-
     wchar_t** matriz = malloc(14 * sizeof(wchar_t*)); // Aloca memória para as linhas
     int contador[14] = {0}; // Contador para cada linha
     int i;
     for (i = 0; i < 14 ; i++) {
         matriz[i] = malloc(4 * CARDNUM * sizeof(wchar_t)); // Aloca memória para cada linha
     }
-    
     // Copia para cada linha as cartas com o mesmo valor
     for (i = 0; i < m->numCartas; i++) {
-         
         int valorAtual = valor(m->cartas[i]);
-
         wcscpy(matriz[valorAtual] + contador[valorAtual]++, &m->cartas[i]);
 
     }
-
     // Calcula o número de elementos em cada linha
     for (i = 0; i < 14; i++) {
         numElementosPorLinha[i] = contador[i];
@@ -305,33 +300,24 @@ wchar_t** divideEmLinhas(MAO m, int *numElementosPorLinha) {
 }
 
 void duplaSequenciaUtil(MAO m, ULTIMA u, int start, int index, int r, int *passo) {
-
     int numElementosPorLinha[14] = {0}; // Array para armazenar o número de elementos em cada linha
-
     wchar_t** matrizCartas = divideEmLinhas(m, numElementosPorLinha);
-
     wchar_t maiorCarta = u->maiorUltima;
-
     if ( r == 6 ) {
-
         for ( int i = 0 ; i < 11 ; i++ ) {
             if ( numElementosPorLinha[i] >= 2 && numElementosPorLinha[i+1] >= 2 && numElementosPorLinha[i+2] >= 2 && ( maior(matrizCartas[i+2][(numElementosPorLinha[i+2]-1)], maiorCarta) )) {
                 geraDuplasSequencias6 (matrizCartas, i, numElementosPorLinha[i], numElementosPorLinha[i+1], numElementosPorLinha[i+2]);
                 *passo = 1;
             }
         }
-
     } else if ( r == 8 ) {
-
     for ( int i = 0 ; i < 10 ; i++ ) {
-
         if ( numElementosPorLinha[i] >= 2 && numElementosPorLinha[i+1] >= 2 && numElementosPorLinha[i+2] >= 2 && numElementosPorLinha[i+3] >= 2 && ( maior(matrizCartas[i+3][(numElementosPorLinha[i+3]-1)], maiorCarta) )) {
             geraDuplasSequencias8 (matrizCartas,i, numElementosPorLinha[i], numElementosPorLinha[i+1], numElementosPorLinha[i+2], numElementosPorLinha[i+3]);
             *passo = 1;
             }
         }
-    } else if ( r == 10 ) {
-            
+    } else if ( r == 10 ) {   
     for ( int i = 0 ; i < 9 ; i++ ) {
 
             if ( numElementosPorLinha[i] >= 2 && numElementosPorLinha[i+1] >= 2 && numElementosPorLinha[i+2] >= 2 && numElementosPorLinha[i+3] >= 2 && numElementosPorLinha[i+4] >= 2 && ( maior(matrizCartas[i+3][(numElementosPorLinha[i+4]-1)], maiorCarta) )) {
@@ -365,9 +351,7 @@ void printPasso(int passo){
 
 
 int tseqUtil(int tseq, MAO m, ULTIMA u){
-    
     if (tseq == 2) return printDuplaSequencia(m,u);
-    
     return -1;
 }
 
@@ -387,21 +371,15 @@ int main(){
     for(int i = 0; i < nTestes; i++){
         MAO m;
         ULTIMA u;
-
         m = malloc(sizeof(struct maoJogador));//inicializa a mao
         u = malloc(sizeof(struct ultimaCombinacao));//inicializa a ultima combinacao
-
         assert(fgetws(u->ultima, CARDNUM, stdin) != NULL);
         assert(fgetws(m->cartas, CARDNUM, stdin) != NULL);
-
         completaUltima(u);
         completaMao(m);
-        
         int tseq = tipoSequencia(u->ultima, u->numUltima);
         wprintf(L"Teste %d\n", i + 1);
-
         decide ( m ,u , tseq);
-           
     }
     return 0;
 }
