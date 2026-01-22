@@ -9,171 +9,95 @@
 #define CARDNUM 4*14
 
 int comparaTamanhos( int array[],int h) {
-    for ( int kaka = 1 ; kaka < h ; kaka++ ) {
-        if ( array[kaka] != array[kaka-1] ) return 0;
-        
-    }
-    return 1;
+	for ( int kaka = 1 ; kaka < h ; kaka++ ) {
+		if ( array[kaka] != array[kaka-1] ) return 0;
+			}
+	return 1;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int eDuplaSequencia(int cartasLidas[]){
-
 	int counter = 0;
-
 	int checked[CARDNUM] = {0};
 
 	for(int index = 0; index < CARDNUM; index++){
-
 		if (cartasLidas[index] == 0) continue;
-
 		if(checked[index] == 0){
-
 			checked[index]++;
-
 			int new_index = index + 4;
-
 			int check_index = new_index - (new_index % 4);
-
 			for(int i = 0; i < 4; i++){
-
 				int to_check = check_index + i;
-
 				if (cartasLidas[to_check] > 0 && checked[to_check] == 0){
-
 					i=3;
-
 					counter++;
-
 					checked[check_index + i]++;
-
 				}
-
 			}
-
 		}
-
 	}
-
-
-
 	return counter;
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int eSequencia(int cartasLidas[], int index){
-
-	
-
 	int curr_index = index;
-
 	int finished = 0, counter = 0;
 
 	while(!finished){
-
 		int new_index = curr_index + 4;
-
 		int check_index = new_index - (new_index % 4);
-
 		if (check_index >= CARDNUM) finished = 1;
-
 		else{ 
-
-
-
 			for (int j = 0; j < 4; j++){
-
 				if(check_index + j >= CARDNUM) j = 3;
-
 				else if(cartasLidas[check_index + j] > 0){
-
 					counter++;
-
 					curr_index = check_index;
-
 					#ifdef DEBUG
-
 					wprintf(L"S: Checking index: %d, %d\n", check_index + j, cartasLidas[check_index + j]);
-
 					#endif
-
 					j = 5;
-
-
-
 				}
-
 				if(j == 3) finished =  1;
-
 			}			
-
 		}
-
 	}
-
 	if (counter > 1) counter++;
-
 	else counter = 0;
-
-
-
 	return counter;
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int eConjunto(int cartasLidas[], int index){ // index da carta atual do array cartasLidas
-
 	int count = 0;
-
 	for(int i = 1; i < 4; i++){
-
 		int new_index = index + i;
-
 		if (new_index % 4 == 0) break;
-
 		#ifdef DEBUG
-
 		wprintf(L"C: checking index: %d, %d\n", new_index, cartasLidas[new_index]);
-
 		#endif
-
 		if (new_index > CARDNUM) break; // a carta esta num index onde nao tem naipes mais altos, nao sei se podemos usar breaks.
-
 		else if (cartasLidas[new_index] > 0) count++;
-
 	}
-
 	if (count != 0) count++;
-
 	return count;
-
 	// se count for 0 nao e um conjunto. POde se verificar tipo bool.
-
 	// count = 0: false, counta != 0: true -> significa que a sequencia e um conjunto
-
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int contaCartas(wchar_t linha[]){
-
 	int counter = 0;
-
 	//int tamanho = sizeof(wchar_t);
-
 	for (int i = 0; linha[i]; i++){
-
 		counter++;
-
 	}
-
 	return counter - 1;
-
 }
 
 int tipoSequencia(int cartasLidas[], int numeroCartas){
@@ -227,7 +151,6 @@ int contaCartasLidas(wchar_t linha[], int numeroCartas, int cartasLidas[]){ //nu
 		cartasLidas[posicaoCarta]++;
 	}
 	return 0;
-
 }
 
 wchar_t traduzPosicao(int index){
@@ -265,47 +188,28 @@ void organizaLinha(int cartasLidas[], int numeroCartas, wchar_t linhaOrganizada[
 }
 
 int main() {
-    
 	setlocale(LC_CTYPE, "C.UTF-8");
-    
 	int numerodetestes;
-    
 	assert(wscanf(L"%d\n", &numerodetestes) == 1);
-    
 	for ( int i = 0 ; i < numerodetestes ; i++ ) {
-        
 		int numerodelinhas;
-        
 		assert(wscanf(L"%d\n", &numerodelinhas) == 1);
-
-        int array1[numerodelinhas]; //array para o numero de cartas
-        int array2[numerodelinhas]; //array para o tipo de sequencias
-        
+		int array1[numerodelinhas]; //array para o numero de cartas
+		int array2[numerodelinhas]; //array para o tipo de sequencias  
 		wchar_t arrayInputsOrg[numerodelinhas][CARDNUM];
 		wchar_t linhaOrganizada[BUFSIZ];
 		int j;
         for ( j = 0 ; j < numerodelinhas; j++) {
 			wchar_t linha[BUFSIZ];
-
-            assert(fgetws(linha, BUFSIZ, stdin) != NULL);
-
+			assert(fgetws(linha, BUFSIZ, stdin) != NULL);
 			int tamanhodalinha = wcslen(linha)-1;
-
-            array1[j] = tamanhodalinha;
-
-            int cartasLidas[CARDNUM] = {0};
-
+			array1[j] = tamanhodalinha;
+			int cartasLidas[CARDNUM] = {0};
 			contaCartasLidas (linha,tamanhodalinha,cartasLidas);
-
-            array2[j] = tipoSequencia (cartasLidas,tamanhodalinha);
-
+			array2[j] = tipoSequencia (cartasLidas,tamanhodalinha);
 			organizaLinha(cartasLidas, tamanhodalinha, linhaOrganizada);
 			wprintf(L"%ls\n", linhaOrganizada); // Imprimir a linha organizada
 		}
-
-		
-		
-
         if (comparaTamanhos (array1, numerodelinhas) == 0) {printf ("Combinações não iguais!\n");}
         if (comparaTamanhos (array2, numerodelinhas) == 0) {printf ("Combinações não iguais!2\n");}
 
