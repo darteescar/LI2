@@ -49,8 +49,6 @@ make clean
 
 * O programa depende de `setlocale(LC_CTYPE, "C.UTF-8")`
 * Deve ser executado num terminal com suporte a Unicode
-* O código está dividido por fases (guiões), refletindo a evolução incremental do projeto
-
 
 # LI2 (English)
 This project implements, in **C**, a set of programs and functions to **read, organize, analyze, and validate card combinations** using Unicode card symbols (🂡, 🂢, 🂣, etc.). The work covers various phases (scripts), from basic card identification to validating plays in a card game. You can refer to the [statement](enunciado.pdf) for the rules.
@@ -102,4 +100,3 @@ make clean
 
 * The program depends on `setlocale(LC_CTYPE, "C.UTF-8")`
 * It should be run in a terminal that supports Unicode
-* The code is divided by phases (scripts), reflecting the incremental evolution of the project
