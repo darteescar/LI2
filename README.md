@@ -7,7 +7,7 @@ Este projeto implementa, em **C**, um conjunto de programas e funções para **l
 ## Membros do grupo
 
 * [darteescar](https://github.com/darteescar)
-* [luis7788](https://github.com/luis7788)
+* [nabattis](https://github.com/NandoBF)
 * [tiagofigueiredo7](https://github.com/tiagofigueiredo7)
 
 ## Input e Output
@@ -58,7 +58,7 @@ This project implements, in **C**, a set of programs and functions to **read, or
 ## Group Members
 
 * [darteescar](https://github.com/darteescar)
-* [luis7788](https://github.com/luis7788)
+* [nabattis](https://github.com/NandoBF)
 * [tiagofigueiredo7](https://github.com/tiagofigueiredo7)
 
 ## Input and Output
