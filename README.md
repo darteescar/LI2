@@ -1,4 +1,4 @@
-# LI2 (Laboratórios de Informática II) (Português)
+# LI2 (Português)
 
 Este projeto implementa, em **C**, um conjunto de programas e funções para **ler, organizar, analisar e validar combinações de cartas** usando símbolos Unicode de cartas (🂡, 🂢, 🂣, etc.). O trabalho cobre as várias fases (guiões), desde a identificação básica de cartas até à validação de jogadas num jogo de cartas. Pode consultar o [enunciado](enunciado.pdf) para saber as regras.
 
