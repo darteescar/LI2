@@ -1,6 +1,6 @@
 # LI2 (Português)
 
-Este projeto implementa, em **C**, um conjunto de programas e funções para **ler, organizar, analisar e validar combinações de cartas** usando símbolos Unicode de cartas (🂡, 🂢, 🂣, etc.). O trabalho cobre as várias fases (guiões), desde a identificação básica de cartas até à validação de jogadas num jogo de cartas. Pode consultar o [enunciado](enunciado.pdf) para saber as regras.
+Programa que lê, organiza, analisa e valida combinações de cartas implementada no âmbito da cadeira de Laboratórios de Informática II. O trabalho cobre as várias fases (guiões), desde a identificação básica de cartas até à validação de jogadas num jogo de cartas. Pode consultar o [enunciado](enunciado.pdf) para saber as regras do jogo.
 
 ### Nota Final: 16 / 20 ⭐️
 
@@ -51,7 +51,7 @@ make clean
 * Deve ser executado num terminal com suporte a Unicode
 
 # LI2 (English)
-This project implements, in **C**, a set of programs and functions to **read, organize, analyze, and validate card combinations** using Unicode card symbols (🂡, 🂢, 🂣, etc.). The work covers various phases (scripts), from basic card identification to validating plays in a card game. You can refer to the [statement](enunciado.pdf) for the rules.
+Program that reads, organizes, analyzes, and validates card combinations implemented within the scope of the Laboratory of Informatics II course. The work covers various phases (guides), from basic card identification to validating plays in a card game. You can read the [statement](enunciado.pdf) to understand the game rules.
 
 ### Final Grade: 16 / 20 ⭐️
 
